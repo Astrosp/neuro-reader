@@ -7,6 +7,7 @@ Neuro Reader is a browser-based speed reader designed around how human vision ac
 Instead of forcing your eyes to jump across lines of text, Neuro Reader keeps your gaze fixed on a single optical pivot while each word moves so its most information-dense letter passes through that point. This dramatically reduces eye movement, fatigue, and cognitive overhead — allowing you to read faster while retaining comprehension.
 
 **Live demo :**
+[![Click Here](https://img.shields.io/badge/click-here-blue)](https://astrosp.github.io/neuro-reader/)
 
 ---
 
