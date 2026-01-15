@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Neuro Reader</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app">
+
+  <div id="top">
+    <div id="text-panel">
+      <textarea id="textInput">
+You can paste your own text here to speed read it. Stop the reader first, paste
+your text, adjust the WPM (words per minute) slider, and press play.
+        The other theory, quantum physics, had a more difficult birth. It was
+a collaborative effort involving dozens of physicists working over the
+course of nearly thirty years. Einstein was among them, but he was not
+their leader; the closest thing this disorganized and unruly band of
+revolutionaries had was Niels Bohr, the great Danish physicist. Bohr’s
+Institute for Theoretical Physics in Copenhagen was the mecca of
+quantum physics in its infancy, with nearly every big name in the field
+for fifty years studying there at one point or another. The physicists
+who worked there made profound discoveries across nearly every field
+of science: they developed the first genuine theory of quantum physics,
+found the underlying logic of the periodic table of the elements, and
+used the power of radioactivity to reveal the basic workings of living
+cells. And it was Bohr, along with a group of his most talented students
+and colleagues—Werner Heisenberg, Wolfgang Pauli, Max Born, Pascual
+Jordan, and others—who developed and championed the “Copenhagen
+interpretation,” which rapidly became the standard interpretation of the
+mathematics of quantum physics.
+      </textarea>
+    </div>
+
+    <div id="controls-panel">
+
+      <label>WPM</label>
+      <input id="wpm" type="range" min="100" max="1200" value="200">
+      <div id="wpmVal">500</div>
+
+      <div class="controls-group">
+        <button id="playPause">▶</button>
+        <button id="stop">■</button>
+      </div>
+
+      <label class="toggle">
+        <input type="checkbox" id="pivotToggle" checked>
+        <span>Pivot guide</span>
+      </label>
+
+    </div>
+  </div>
+
+  <div id="reader-stage">
+    <div id="focus-box">
+      <div id="pivot"></div>
+      <div id="word"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
