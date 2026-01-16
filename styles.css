@@ -5,6 +5,7 @@ body {
   font-family: system-ui, sans-serif;
 }
 
+
 #app {
   height: 100vh;
   display: grid;
@@ -14,11 +15,13 @@ body {
 #top {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
-  gap: 10px;
-  padding: 10px;
+  gap: 12px;
+  padding: 12px;
 }
 
-#text-panel, #controls-panel {
+
+#text-panel,
+#controls-panel {
   background: #0e121c;
   border-radius: 12px;
   padding: 16px;
@@ -26,19 +29,31 @@ body {
   flex-direction: column;
 }
 
+
 textarea {
   flex: 1;
-  background: black;
+  background: #000;
   color: white;
   border: none;
   padding: 12px;
   resize: none;
   font-size: 16px;
+  line-height: 1.4;
 }
+
+textarea:focus {
+  outline: none;
+}
+
+textarea::selection {
+  background: rgba(0, 180, 255, 0.45);
+}
+
 
 label {
   margin-top: 12px;
   color: #aaa;
+  font-size: 14px;
 }
 
 button {
@@ -47,7 +62,7 @@ button {
   width: 65px;
   height: 48px;
   font-size: 18px;
-  border: 1px;
+  border: none;
   color: white;
   cursor: pointer;
 }
@@ -59,24 +74,42 @@ button:hover {
 .controls-group {
   display: flex;
   gap: 16px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 20px;
-  color: #aaa;
-  height: 55px;
+  gap: 10px;
+  font-size: 15px;
+  margin-top: 10px;
 }
 
 .toggle input {
   accent-color: #ff5c5c;
-  width: 55px;
-  height: 18px;
 }
+
+
+.pivot-bias {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.pivot-bias button {
+  width: 44px;
+  height: 36px;
+  font-size: 16px;
+}
+
+#biasLabel {
+  color: #ccc;
+  min-width: 70px;
+  text-align: center;
+  font-size: 14px;
+}
+
 
 #reader-stage {
   border-top: 1px solid #1c2130;
@@ -94,6 +127,7 @@ button:hover {
   overflow: hidden;
 }
 
+
 #word {
   position: absolute;
   top: 50%;
@@ -106,16 +140,16 @@ button:hover {
 
 #word .pivot {
   color: #ff5c5c;
-  text-shadow: 0 0 12px rgba(255,90,90,0.6);
+  text-shadow: 0 0 12px rgba(255, 90, 90, 0.6);
 }
+
 
 #pivot {
   position: absolute;
   width: 1px;
   height: 100%;
-  background: rgba(255,80,80,0.35);
+  background: rgba(255, 80, 80, 0.35);
   left: 50%;
-  top: 0;
   transform: translateX(-50%);
 }
 
@@ -123,23 +157,63 @@ button:hover {
   display: none;
 }
 
-textarea:focus {
-  outline: none;
-  box-shadow: none;
+.controls-note {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 13px;
+  color: #8a92a8;
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0.9;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-textarea::selection {
-  background: rgba(0, 180, 255, 0.45);
-  color: white;
-}
+@media (max-width: 768px) {
 
-textarea::-moz-selection {
-  background: rgba(0, 180, 255, 0.45);
-  color: white;
-}
+  #app {
+    grid-template-rows: auto 1fr;
+  }
 
-/* textarea[readonly] {
-  opacity: 0.7;
-  cursor: default;
-} */
+  #top {
+    grid-template-columns: 1fr;
+    padding: 8px;
+  }
+
+  #text-panel {
+    height: 160px;
+  }
+
+  textarea {
+    font-size: 14px;
+  }
+
+  #controls-panel {
+    padding: 12px;
+  }
+
+  .controls-group {
+    justify-content: space-around;
+  }
+
+  #reader-stage {
+    border-top: none;
+  }
+
+  #focus-box {
+    height: 120px;
+  }
+
+  #word {
+    font-size: 56px;
+  }
+
+  .pivot-bias {
+    justify-content: center;
+  }
+
+  .controls-note {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
 

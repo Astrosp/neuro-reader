@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Neuro Reader</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Reader</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div id="app">
+  <div id="app">
 
-  <div id="top">
-    <div id="text-panel">
-      <textarea id="textInput">
+    <div id="top">
+
+      
+      <div id="text-panel">
+        <textarea id="textInput">
+............
+
 You can paste your own text here to speed read it. Stop the reader first, paste
 your text, adjust the WPM (words per minute) slider, and press play.
+............
+
         The other theory, quantum physics, had a more difficult birth. It was
 a collaborative effort involving dozens of physicists working over the
 course of nearly thirty years. Einstein was among them, but he was not
@@ -32,36 +41,57 @@ Jordan, and others—who developed and championed the “Copenhagen
 interpretation,” which rapidly became the standard interpretation of the
 mathematics of quantum physics.
       </textarea>
-    </div>
-
-    <div id="controls-panel">
-
-      <label>WPM</label>
-      <input id="wpm" type="range" min="100" max="1200" value="200">
-      <div id="wpmVal">500</div>
-
-      <div class="controls-group">
-        <button id="playPause">▶</button>
-        <button id="stop">■</button>
       </div>
 
-      <label class="toggle">
-        <input type="checkbox" id="pivotToggle" checked>
-        <span>Pivot guide</span>
-      </label>
+     
+      <div id="controls-panel">
 
+        <label>WPM</label>
+        <input id="wpm" type="range" min="100" max="1200" value="200">
+        <div id="wpmVal">500</div>
+
+        <div class="controls-group">
+          <button id="playPause">▶</button>
+          <button id="stop">■</button>
+        </div>
+
+        <label class="toggle">
+          <input type="checkbox" id="pivotToggle" checked>
+          <span>Pivot guide</span>
+        </label>
+
+        <label class="toggle">
+          <input type="checkbox" id="chunkToggle" checked>
+          <span>Semantic chunking</span>
+        </label>
+
+        <label>Pivot position</label>
+        <div class="pivot-bias">
+          <button data-bias="-1">◀</button>
+          <span id="biasLabel">Default</span>
+          <button data-bias="1">▶</button>
+        </div>
+
+        <div class="controls-note">
+          Use Play button or Space to start and pause.
+          use the ⇐ or ⇒ to move, press stop to edit/paste text. 
+        </div>
+
+
+      </div>
     </div>
+
+
+    <div id="reader-stage">
+      <div id="focus-box">
+        <div id="pivot"></div>
+        <div id="word"></div>
+      </div>
+    </div>
+
   </div>
 
-  <div id="reader-stage">
-    <div id="focus-box">
-      <div id="pivot"></div>
-      <div id="word"></div>
-    </div>
-  </div>
-
-</div>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
