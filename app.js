@@ -1,5 +1,4 @@
 
-
 const textInput = document.getElementById("textInput");
 const wordEl = document.getElementById("word");
 const focusBox = document.getElementById("focus-box");
@@ -161,10 +160,14 @@ function makeUnit(tokens) {
 
 
 function basePivotIndex(word) {
-  if (word.length <= 1) return 0;
-  if (word.length <= 5) return 1;
-  if (word.length <= 9) return 2;
-  return 3;
+  const len = word.length;
+
+  if (len <= 4) return 1;
+  if (len <= 7) return 2;
+  if (len <= 10) return 3;
+
+
+  return Math.min(len - 2, Math.floor(len * 0.35));
 }
 
 
@@ -201,25 +204,45 @@ function draw() {
     `<span class="pivot">${mid}</span>` +
     `<span>${post}${after}</span>`;
 
-  wordEl.style.fontSize = "90px";
+  // wordEl.style.fontSize = "90px";
+  wordEl.style.fontSize = window.innerWidth <= 768 ? "48px" : "90px";
   requestAnimationFrame(alignAndScale);
 }
+ 
 
 function alignAndScale() {
   const mid = wordEl.querySelector(".pivot");
   if (!mid) return;
 
-  const pivotX = focusBox.clientWidth / 2;
-  const midCenter = mid.offsetLeft + mid.offsetWidth / 2;
+  const boxWidth = focusBox.clientWidth;
+  const pivotX = boxWidth / 2;
+
+
+  wordEl.style.left = "0px";
+
+
+  wordEl.offsetWidth;
+
+  const midCenter =
+    mid.offsetLeft + mid.offsetWidth / 2;
+
 
   wordEl.style.left = (pivotX - midCenter) + "px";
 
-  let size = 90;
-  while (wordEl.scrollWidth > focusBox.clientWidth - 40 && size > 40) {
+  let size = parseFloat(getComputedStyle(wordEl).fontSize);
+  const minSize = window.innerWidth <= 768 ? 28 : 40;
+  const padding = window.innerWidth <= 768 ? 14 : 40;
+
+  while (
+    wordEl.scrollWidth > boxWidth - padding &&
+    size > minSize
+  ) {
     size -= 2;
     wordEl.style.fontSize = size + "px";
+    wordEl.offsetWidth; // force reflow
   }
 }
+
 
 
 function pacingMultiplier(text) {

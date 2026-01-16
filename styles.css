@@ -200,11 +200,13 @@ button:hover {
   }
 
   #focus-box {
-    height: 120px;
+    position: relative;
   }
 
   #word {
-    font-size: 36px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .pivot-bias {
